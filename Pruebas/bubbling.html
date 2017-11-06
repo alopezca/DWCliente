@@ -1,0 +1,72 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: xenlord
+ * Date: 18/10/17
+ * Time: 11:56
+ */
+?>
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    form {
+        background-color: green;
+        position: relative;
+        width: 150px;
+        height: 150px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    div {
+        background-color: blue;
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        width: 100px;
+        height: 100px;
+    }
+
+    p {
+        background-color: red;
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        margin: 0;
+    }
+
+    body {
+        line-height: 25px;
+        font-size: 16px;
+    }
+</style>
+<script>
+    form.onclick = function(event) {
+        event.target.style.backgroundColor = 'yellow';
+
+        // chrome needs some time to paint yellow
+        setTimeout(() => {
+            alert("target = " + event.target.tagName + ", this=" + this.tagName);
+            event.target.style.backgroundColor = ''
+        }, 0);
+    };
+</script>
+<body>
+<form onclick="alert('form')">FORM
+    <div onclick="alert('div')">DIV
+    <p onclick="alert('p')">P</p>
+    </div>
+</form>
+<button onclick="event.stopPropagation()">Click me</button>
+</body>
+</html>

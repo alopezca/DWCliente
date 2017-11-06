@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload=inicio;
+    function inicio() {
+        let parrafos = document.getElementsByTagName("p");
+        for (let i = 0; i < parrafos.length;i++) {
+           let parrafo = parrafos[i];
+           parrafo.addEventListener("click", aumentar);
+           parrafo.style.fontSize = "16px";
+        }
+    }
+    function aumentar() {
+        let size = parseInt(this.style.fontSize);
+        size++;
+        this.style.fontSize=size+"px";
+    }
+</script>
+<body>
+<p>Este texto debe aumentar de tamaño</p>
+<p>Este texto debe aumentar de tamaño</p>
+<p>Este texto debe aumentar de tamaño</p>
+</body>
+</html>

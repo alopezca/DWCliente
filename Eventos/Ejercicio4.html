@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    .linea {
+        height: 100px;
+        width: 100px;
+        background: blue;
+        display: inline-block;
+    }
+</style>
+<script>
+    window.onload = divs;
+
+    function divs() {
+        let divs = document.getElementsByTagName("div");
+        for (let i = 0; i < divs.length; i++) {
+            let div = divs[i];
+            div.addEventListener("mouseover", cambiaColor);
+            div.addEventListener("mouseout", cambiaColor);
+            div.addEventListener("click", cambiaColor);
+        }
+    }
+
+    function cambiaColor(event) {
+        if (event.type === "mouseover") {
+            this.style.backgroundColor = "green";
+        } else if (event.type=== "mouseout") {
+            this.style.backgroundColor = "blue";
+        } else if(event.type==="click"){
+            this.style.backgroundColor = "red";
+        }
+    }
+
+</script>
+<body>
+<div class="linea">ASR31</div>
+<div class="linea">ASR32</div>
+<div class="linea">SM21</div>
+<div class="linea">SM22</div>
+<div class="linea">DW31</div>
+<div class="linea">DW32</div>
+</body>
+</html>

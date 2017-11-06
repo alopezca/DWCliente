@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    window.onload = botones;
+
+    function botones(){
+        let btn1 = document.createElement("input");
+        btn1.value = "1";
+        btn1.type = "button";
+        btn1.addEventListener("click", dameClick);
+        document.body.appendChild(btn1);
+
+        let btn2 = document.createElement("input")
+        btn2.setAttribute("value","2");
+        btn2.setAttribute("type", "button");
+        btn2.addEventListener("click", dameClick);
+        document.body.appendChild(btn2);
+
+        let btn3 = document.createElement("input");
+        btn3.setAttribute("value","3");
+        btn3.setAttribute("type", "button");
+        btn3.addEventListener("click", dameClick);
+        document.body.appendChild(btn3);
+    }
+    function dameClick(){
+        console.log(this.value);
+    }
+</script>
+<body>
+
+</body>
+</html>

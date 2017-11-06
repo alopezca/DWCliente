@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function()
+    {
+        var contenedor2 = document.getElementById("contenedor2");
+        contenedor2.onmousemove = function(e)
+        {
+            // Hallamos la posición relativa |posición elemento - posición real|
+            var x = contenedor2.offsetLeft - e.pageX;
+            var y = contenedor2.offsetTop - e.pageY;
+            // Hacemos el valor absoluto
+            x = Math.abs(x);
+            y = Math.abs(y);
+            contenedor2.innerHTML = "Eje X: " + x + " " + "Eje Y: " + y;
+        }
+    }
+</script>
+<body>
+<div id="contenedor2" style="background-color:red; width:50%; height:300px;"></div>
+</body>
+</html>

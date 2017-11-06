@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload=getParrafo;
+    function getParrafo(){
+        let parrafo = document.getElementById("p");
+        parrafo.addEventListener("click", cambiarColor);
+        parrafo.addEventListener("dblclick", cambiarColor);
+    }
+    function cambiarColor(event){
+        if(event.type==="click"){
+            this.style.color="red";
+        } else if(event.type==="dblclick"){
+            this.style.color="blue";
+        }
+    }
+</script>
+<body>
+<p id="p">WADUHEK WADUHEK WADUHEK WADUHEK WADUHEK WADUHEK WADUHEK</p>
+</body>
+</html>

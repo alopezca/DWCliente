@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    let ventana;
+    let mostrar;
+    function crearVentana(){
+        ventana = window.open("", "Ventana nueva", "width=200, height=200");
+        ventana.moveTo(500,200);
+        ventana.addEventListener("mousemove", inactividad);
+        ventana.addEventListener("click", inactividad);
+        ventana.addEventListener("mouseover", inactividad);
+        mostrar = setTimeout(cerrar, 5000);
+    }
+    function inactividad(event) {
+        clearTimeout(mostrar);
+        mostrar = setTimeout(cerrar, 5000);
+    }
+    function cerrar(){
+        ventana.close();
+    }
+</script>
+<body>
+<button type="button" onclick="crearVentana()">Crear ventana</button>
+</body>
+</html>

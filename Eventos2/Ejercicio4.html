@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .master {
+        height: 270px;
+        width: 800px;
+        padding: 10px;
+        border: 2px solid red;
+        background-color: green;
+        margin: 0 auto 0 auto;
+    }
+
+    div {
+        height: 100px;
+        width: 500px;
+        padding: 10px;
+        border: 2px solid red;
+        background-color: blue;
+        margin: 0 auto 0 auto;
+    }
+
+    p {
+        background-color: orange;
+        text-align: center;
+    }
+
+    span {
+        background-color: purple;
+        border: 2px solid red;
+    }
+
+</style>
+<script>
+    window.onload=elementos;
+    function elementos(){
+        let elementos = document.getElementsByTagName("*");
+        for(let i=0;i<elementos.length;i++){
+            elementos[i].addEventListener("click", amarillo);
+        }
+    }
+    function amarillo(event){
+            this.style.backgroundColor = 'yellow';
+            event.stopPropagation();
+
+    }
+
+</script>
+<body>
+<div class="master">
+    <div><p>Soy un parrafo.<span>Soy un span</span></p></div>
+    </br>
+    <div><p>Soy un parrafo.<span>Soy un span</span></p></div>
+</div>
+</body>
+</html>

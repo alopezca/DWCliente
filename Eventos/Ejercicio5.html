@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload=links;
+    function links(){
+        let links = document.getElementsByTagName("a");
+        for (let i = 0; i < links.length; i++) {
+            let link = links[i];
+            link.addEventListener("mouseover", mostrar);
+        }
+    }
+    function mostrar(){
+        let muestra = this.getAttribute("href");
+        let p = document.createElement("p");
+        p.innerText=muestra;
+        document.body.appendChild(p);
+
+    }
+</script>
+<body>
+<a href="http://www.finofilipino.org">Fino</a>
+<a href="http://www.adobe.com/es/">Adobe</a>
+<a href="https://www.w3schools.com/">W3Schools</a>
+</body>
+</html>

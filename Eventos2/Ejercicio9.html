@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #cuadro {
+        background-color: yellow;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top:50%;
+        left:50%;
+        margin-left:-100px;
+        margin-top:-100px;
+    }
+</style>
+<script>
+    window.onload = click;
+    var cuadro = document.getElementById("cuadro");
+    var clicked = false;
+    function click() {
+        var cuadro = document.getElementById("cuadro");
+        cuadro.addEventListener("mousedown", colorPulsar);
+        cuadro.addEventListener("mouseup", colorSoltar);
+        cuadro.addEventListener("mousemove", mueveCuadro);
+    }
+    function colorPulsar(event){
+        clicked = true;
+        this.style.backgroundColor = "blue";
+    }
+    function colorSoltar(event){
+        this.style.backgroundColor = "yellow";
+        clicked = false;
+    }
+    function mueveCuadro(event){
+        var cuadro = document.getElementById("cuadro");
+        var x = event.clientX;
+        var y = event.clientY;
+        if(clicked){
+            cuadro.style.top=y+"px";
+            cuadro.style.left=x+"px";
+        }
+    }
+</script>
+<body>
+<div id="cuadro">
+
+</div>
+</body>
+</html>

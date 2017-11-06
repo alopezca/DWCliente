@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        let alto= window.innerHeight;
+        let ancho = window.innerWidth;
+        window.onload= addEv;
+        function addEv()
+        {
+
+            document.body.addEventListener("mousemove", pintar);
+
+        }
+        function pintar(event) {
+
+            let coordX =  event.clientX;
+            let coordY = event.clientY;
+
+
+            if((coordX >= ancho*0.1 && coordX <= ancho*0.2) || (coordY >= alto*0.1 && coordY <= alto*0.2) || (coordX <= ancho-(ancho*0.1) && coordX >= ancho-(ancho*0.2) ) || (coordY <= alto-(alto*0.1) && (coordY >= alto-(alto*0.2))))
+            {
+                document.body.style.backgroundColor = "yellow";
+            }
+
+            else if(coordX < ancho*0.1 || coordY < alto*0.1 || coordX > ancho-(ancho*0.1) || coordY > alto-(alto*0.1))
+            {
+                document.body.style.backgroundColor = "red";
+            }else {
+                document.body.style.backgroundColor = "green";
+            }
+
+
+        }
+    </script>
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="height: 1000px">
+
+</body>
+</html>
+<!-- 7. Crea una pagina en la que el fondo cambiara de color segun el raton este cerca del borde de la pagina.
+
+Si esta a menos del 10% se pondra rojo.
+Si esta entre el 10% y el 20% estara amarillo.
+Y sino estara de color verde.
+-->

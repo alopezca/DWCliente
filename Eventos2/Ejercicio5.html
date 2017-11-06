@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<script>
+    window.onload=contar;
+    function contar(){
+    var textarea = document.getElementById("descripcion");
+    textarea.addEventListener("keydown", contador)
+    var letras = document.getElementById("letras");
+    console.log(textarea.value.length);
+    letras.innerText=textarea.value.length+"/140 caracteres";
+    document.appendChild(contador);
+    }
+    function contador(event){
+        let letras = document.getElementById("letras");
+        let contador = this.value.length;
+        if(contador <=140){
+            letras.textContent = contador + "/140 caracteres";
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>
+<body>
+<div align="center">
+    <textarea id="descripcion" cols="40" rows="3" name="descripcion"></textarea></br>
+    <span id="letras">140/140 caracteres</span>
+</div>
+</body>
+</html>
