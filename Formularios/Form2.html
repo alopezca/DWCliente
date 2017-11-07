@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cuadrados</title>
+</head>
+<style>
+    .cuadrado{
+        background-color: #666666;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        margin: 20px;
+    }
+</style>
+<script>
+    function cuadrados(){
+        var cuadrados = document.getElementsByTagName("div");
+        var oCuadrados = document.formulario.cuadrados;
+        var oColores = document.formulario.colores;
+        oCuadrados.addEventListener("change", cambiar);
+        oColores.addEventListener("change", cambiar);
+    }
+    function colores(){
+        var oColores = document.formulario.colores;
+        oCuadrados.addEventListener("change", cambiar);
+
+    }
+
+    function cambiar(){
+
+    }
+</script>
+<body>
+<div class="cuadrado"></div>
+<div class="cuadrado"></div>
+<div class="cuadrado"></div>
+<div class="cuadrado"></div>
+
+<form name="formulario" action="#">
+
+    <select name="cuadrados" name="cuadrados">
+        <option value="0">1. Cuadrado</option>
+        <option value="1">2. Cuadrado</option>
+        <option value="2">3. Cuadrado</option>
+        <option value="3">4. Cuadrado</option>
+    </select>
+    <select name="colores" name="colores">
+        <option value="blue">Azul</option>
+        <option value="green">Verde</option>
+        <option value="red">Rojo</option>
+        <option value="yellow">Amarillo</option>
+    </select>
+    <button type="submit" onclick="cambiar()">Cambiar</button>
+</form>
+</body>
+</html>
