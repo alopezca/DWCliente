@@ -14,21 +14,21 @@
     }
 </style>
 <script>
-    function cuadrados(){
-        var cuadrados = document.getElementsByTagName("div");
-        var oCuadrados = document.formulario.cuadrados;
-        var oColores = document.formulario.colores;
-        oCuadrados.addEventListener("change", cambiar);
-        oColores.addEventListener("change", cambiar);
+    window.onload=init;
+
+    function init(){
+        document.getElementById("formulario").addEventListener("submit", cambiar);
     }
-    function colores(){
-        var oColores = document.formulario.colores;
-        oCuadrados.addEventListener("change", cambiar);
-
-    }
-
-    function cambiar(){
-
+    function cambiar(event){
+        event.preventDefault();
+        var cuadrados = document.getElementsByClassName("cuadrado")
+       var cuadrado = document.getElementById("formulario").elements["cuadrados"].value;
+       var color = document.getElementById("formulario").elements["colores"].value;
+        if(cuadrado === "default" || color ==="default"){
+            alert("Selecciona una opción")
+        } else {
+            cuadrados[cuadrado -1].style.backgroundColor = color;
+        }
     }
 </script>
 <body>
@@ -37,15 +37,17 @@
 <div class="cuadrado"></div>
 <div class="cuadrado"></div>
 
-<form name="formulario" action="#">
+<form id="formulario" action="#">
 
     <select name="cuadrados" name="cuadrados">
-        <option value="0">1. Cuadrado</option>
-        <option value="1">2. Cuadrado</option>
-        <option value="2">3. Cuadrado</option>
-        <option value="3">4. Cuadrado</option>
+        <option value="default">Selecciona el cuadrado</option>
+        <option value="1">1. Cuadrado</option>
+        <option value="2">2. Cuadrado</option>
+        <option value="3">3. Cuadrado</option>
+        <option value="4">4. Cuadrado</option>
     </select>
     <select name="colores" name="colores">
+        <option value="default">Selecciona el Color</option>
         <option value="blue">Azul</option>
         <option value="green">Verde</option>
         <option value="red">Rojo</option>

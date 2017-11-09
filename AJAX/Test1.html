@@ -5,24 +5,27 @@
     <title>Title</title>
 </head>
 <script>
-    var http = getXMLHTTPRequest();
-    var url = "midocumento.txt";
-    http.open("GET", url, true);
-    http.onreadystatechange = function () {
-        if (http.readystate == 4) {
-            // Se ha recibido la respuesta.
-            if (http.status == 200) {
-                // Aquí escribiremos lo que queremos que
-                // se ejecute tras recibir la respuesta
-                var datosDoc = http.responseText;
-                alert(datosDoc);
-            } else {
-                // Ha ocurrido un error
-                alert("Error: "+ http.statusText);
+    function ajax(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        var http = new XMLHttpRequest();
+        var url = "getNombre?nombre=" + document.getElementsByName("nombre")[0].value;
+        http.open("GET", url, true);
+        http.onreadystatechange = function () {
+            if (http.readyState == 4) {
+                if (http.status == 200) {
+                    var datosDoc = http.responseText;
+                    var parrafo = document.getElementById("parrafo");
+                    parrafo.innerText=datosDoc;
+                    document.body.appendChild(parrafo);
+                } else {
+                    // Ha ocurrido un error
+                    alert("Error: " + http.statusText);
+                }
             }
-        }
-    };
-    http.send(null);
+        };
+        http.send(null);
+    }
 </script>
 <body>
 <form method="get" action="">

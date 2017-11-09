@@ -6,28 +6,34 @@
 <script>
     window.onload=init;
     function init(){
-        var formulario = document.formulario.addEventListener("submit", comprobar)
+        document.getElementById("formulario").addEventListener("submit", comprobar);
     }
-    function comprobar() {
+    function comprobar(event) {
         if (this.elements[0].value == "") {
-            alert("el campo nombre está vacio")
+            event.preventDefault();
+            alert("el campo nombre está vacio");
         } else if (this.elements[1].value == ""){
+            event.preventDefault();
             alert("El campo apellido está vacio");
         } else if(this.elements[2].value == "") {
+            event.preventDefault();
             alert("El campo email está vacio");
-        } else {
-            alert("Nombre: "+this.elements[0].value
-                + "\n\nApellidos: "+this.elements[1].value
-                + "\n\nEmail: "+this.elements[2].value
-            )
+        } else if(isNaN(this.elements[3].value)) {
+            event.preventDefault();
+            alert("El campo está vacío o no es un número");
+        }else if(this.elements[4].value =="") {
+            event.preventDefault();
+            alert("El campo contexto está vacio");
+        }else {
+            alert("Formulario aceptado.")
         }
-}
+    }
 
 </script>
 <h3>Using CSS to style an HTML Form</h3>
 
 <div class="container">
-    <form name="formulario" action="#">
+    <form id="formulario" action="#">
 
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
@@ -38,6 +44,11 @@
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="Introduce email" >
 
+        <label for="phone">Teléfono</label>
+        <input type="text" id="phone" name="phone" placeholder="Introduce el telefono">
+
+        <label for="phone">Contexto</label>
+        <textarea id="textarea" placeholder="Comenta tu problema"></textarea>
         <p><input type="submit" value="Comprobar"></p>
     </form>
 </div>

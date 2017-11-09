@@ -5,23 +5,19 @@
         let alto= window.innerHeight;
         let ancho = window.innerWidth;
         window.onload= addEv;
-        function addEv()
-        {
 
+        function addEv() {
             document.body.addEventListener("mousemove", pintar);
-
         }
         function pintar(event) {
 
             let coordX =  event.clientX;
             let coordY = event.clientY;
 
-
             if((coordX >= ancho*0.1 && coordX <= ancho*0.2) || (coordY >= alto*0.1 && coordY <= alto*0.2) || (coordX <= ancho-(ancho*0.1) && coordX >= ancho-(ancho*0.2) ) || (coordY <= alto-(alto*0.1) && (coordY >= alto-(alto*0.2))))
             {
                 document.body.style.backgroundColor = "yellow";
             }
-
             else if(coordX < ancho*0.1 || coordY < alto*0.1 || coordX > ancho-(ancho*0.1) || coordY > alto-(alto*0.1))
             {
                 document.body.style.backgroundColor = "red";
