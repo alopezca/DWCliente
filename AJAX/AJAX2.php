@@ -10,12 +10,10 @@ $fichero = 'AJAX2.xml';
 
 if(file_exists($fichero)){
     $output = file_get_contents($fichero);
-    header('Content-Type: applicattion/XML');
+    header('Content-Type: application/XML');
     print ($output);
 } else{
     print("No existe el fichero");
 }
-
-
 
 ?>

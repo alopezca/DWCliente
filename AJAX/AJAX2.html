@@ -9,7 +9,7 @@
     var http;
     function init(){
         http = new XMLHttpRequest();
-        var url = "http://localhost/DWCliente/AJAX/AJAX2.php";
+        var url = "AJAX2.php";
         http.open("GET", url, true);
         http.onreadystatechange = ajax;
         http.send(null)
@@ -31,25 +31,36 @@
         var peliculas = xml.getElementsByTagName("Pelicula");
         var numPeliculas = peliculas.length;
         var eTabla = document.createElement("table");
-        eTabla.style.border = "1px solid";
-        var eTR;
+
+        var hDirector = document.createElement("th");
+        var hTitulo = document.createElement("th");
+        hDirector.textContent = "Director";
+        hTitulo.textContent= "Película";
+        var trHeader = document.createElement("tr");
+        trHeader.appendChild(hDirector);
+        trHeader.appendChild(hTitulo);
+        eTabla.appendChild(trHeader);
+
+
         for (let i=0; i<numPeliculas;i++) {
-            if (i % 2) {
-                eTR = document.createElement("tr");
-            }
-            var eTD = document.createElement("td");
-            eTD.style.border = "1px solid";
-            eTD.appendChild(crearParrafo("Director: ", peliculas[i].children[0].textContent));
-            eTD.appendChild(crearParrafo("Director: ", peliculas[i].children[1].textContent));
-            eTR.appendChild(eTD);
+            var pelicula = peliculas[i];
+            var eDirector = pelicula.children[0];
+            var eTitulo = pelicula.children[1];
+            var director = eDirector.textContent;
+            var titulo = eTitulo.textContent;
+
+            var eTR = document.createElement("tr");
+            eTR.appendChild(crearTD(director));
+            eTR.appendChild(crearTD(titulo));
             eTabla.appendChild(eTR);
         }
         document.body.appendChild(eTabla);
     }
-    function crearParrafo(titulo, contenido){
-        var p = document.createElement("p");
-        p.textContent = titulo + contenido;
-        return p;
+    function crearTD(contenido){
+        var eTD = document.createElement("td");
+        eTD.style.border = "1px solid";
+        eTD.textContent =contenido;
+        return eTD;
     }
 </script>
 <body>
