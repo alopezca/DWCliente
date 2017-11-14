@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peliculas</title>
+</head>
+<script>
+    window.onload = init;
+    var http;
+    function init(){
+        http = new XMLHttpRequest();
+        var url = "http://localhost/DWCliente/AJAX/AJAX2.php";
+        http.open("GET", url, true);
+        http.onreadystatechange = ajax;
+        http.send(null)
+    }
+    function ajax() {
+            if (http.readyState == 4) {
+                //se ha recibido la respuesta
+                if (http.status == 200) {
+                    //Ejecutar aqui lo que queremos tras recibir la respuesta
+                    var documento = http.responseXML;
+                    crearTabla(documento);
+                } else {
+                    // Ha ocurrido un error
+                    alert("Error: " + http.statusText);
+                }
+            }
+        }
+    function crearTabla(xml){
+        var peliculas = xml.getElementsByTagName("Pelicula");
+        var numPeliculas = peliculas.length;
+        var eTabla = document.createElement("table");
+        eTabla.style.border = "1px solid";
+        var eTR;
+        for (let i=0; i<numPeliculas;i++) {
+            if (i % 2) {
+                eTR = document.createElement("tr");
+            }
+            var eTD = document.createElement("td");
+            eTD.style.border = "1px solid";
+            eTD.appendChild(crearParrafo("Director: ", peliculas[i].children[0].textContent));
+            eTD.appendChild(crearParrafo("Director: ", peliculas[i].children[1].textContent));
+            eTR.appendChild(eTD);
+            eTabla.appendChild(eTR);
+        }
+        document.body.appendChild(eTabla);
+    }
+    function crearParrafo(titulo, contenido){
+        var p = document.createElement("p");
+        p.textContent = titulo + contenido;
+        return p;
+    }
+</script>
+<body>
+</body>
+</html>
