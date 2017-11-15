@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peliculas</title>
+</head>
+<style>
+.img{
+ width: 100px;
+}
+</style>
+<script>
+    window.onload = init;
+    var http;
+    function init(){
+        http = new XMLHttpRequest();
+        var url = "AJAX3.php";
+        http.open("GET", url, true);
+        http.onreadystatechange = ajax;
+        http.send(null)
+    }
+    function ajax() {
+            if (http.readyState == 4) {
+                //se ha recibido la respuesta
+                if (http.status == 200) {
+                    //Ejecutar aqui lo que queremos tras recibir la respuesta
+                    var documento = http.responseXML;
+                    crearTabla(documento);
+                } else {
+                    // Ha ocurrido un error
+                    alert("Error: " + http.statusText);
+                }
+            }
+        }
+    function crearTabla(xml){
+        var peliculas = xml.getElementsByTagName("Pelicula");
+        var numPeliculas = peliculas.length;
+        var eTabla = document.createElement("table");
+        var hDirector = document.createElement("th");
+        var hTitulo = document.createElement("th");
+        var caratula = document.createElement("th");
+        hDirector.textContent = "Director";
+        hTitulo.textContent= "Película";
+        caratula.textContent = "Carátula";
+        var trHeader = document.createElement("tr");
+        trHeader.appendChild(hDirector);
+        trHeader.appendChild(hTitulo);
+        trHeader.appendChild(caratula);
+        eTabla.appendChild(trHeader);
+
+        var contador
+        for (let i=0; i<numPeliculas;i++) {
+            var pelicula = peliculas[i];
+
+            var eDirector = pelicula.children[0];
+            var eTitulo = pelicula.children[1];
+            var eImagen = pelicula.children[2];
+
+            var director = eDirector.textContent;
+            var titulo = eTitulo.textContent;
+
+            var IMG = document.createElement("img");
+            IMG.src = "imagen/"+eImagen.textContent;
+            IMG.className = "img";
+
+            //IMG.addEventListener("click", cargarSinopsis);
+
+            var eTR = document.createElement("tr");
+            eTR.appendChild(crearTD(director));
+            eTR.appendChild(crearTD(titulo));
+            eTR.appendChild(crearIMG(IMG));
+            eTabla.appendChild(eTR);
+        }
+        document.body.appendChild(eTabla);
+    }
+    function crearTD(contenido){
+        var eTD = document.createElement("td");
+        eTD.style.border = "1px solid";
+        eTD.textContent = contenido;
+        return eTD;
+    }
+    function crearIMG(contenido){
+        var eTD = document.createElement("td");
+        eTD.style.border = "1px solid";
+        eTD.appendChild(contenido);
+        return eTD;
+    }
+    function cargarSinopsis(){
+
+    }
+</script>
+<body>
+</body>
+</html>
+<!-- 3. Crear una página en la que apareceran los carteles de las peliculas del ejercicio anterior. Cuando pulsemos sobre cada cartel aparecera la sinopsis de esa pelicula en un partado que estara debajo de las imagenes. Cada sinopsis se guardaran en un fichero diferente. -->
