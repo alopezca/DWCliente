@@ -8,6 +8,13 @@
 .img{
  width: 100px;
 }
+.descripcion{
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    position: absolute;
+    margin-left: 50%;
+}
 </style>
 <script>
     window.onload = init;
@@ -48,7 +55,6 @@
         trHeader.appendChild(caratula);
         eTabla.appendChild(trHeader);
 
-        var contador
         for (let i=0; i<numPeliculas;i++) {
             var pelicula = peliculas[i];
 
@@ -62,8 +68,8 @@
             var IMG = document.createElement("img");
             IMG.src = "imagen/"+eImagen.textContent;
             IMG.className = "img";
-
-            //IMG.addEventListener("click", cargarSinopsis);
+            IMG.alt = titulo;
+            IMG.addEventListener("click", cargarSinopsis);
 
             var eTR = document.createElement("tr");
             eTR.appendChild(crearTD(director));
@@ -85,11 +91,24 @@
         eTD.appendChild(contenido);
         return eTD;
     }
-    function cargarSinopsis(){
+    function cargarSinopsis(event){
+        var caja = document.getElementById("descripcion");
+        var sinopsis="Sinopsis: ";
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var xmlDocSinopsis = this.responseXML;
+                sinopsis += xmlDocSinopsis.getElementsByTagName("Sinopsis")[0].childNodes[0].nodeValue;
+                caja.textContent = sinopsis;
+            }
+        };
+        xhttp.open("GET", "info/"+event.target.alt+".xml", true);
+        xhttp.send();
 
     }
 </script>
 <body>
+<p id="descripcion" class="descripcion"></p>
 </body>
 </html>
 <!-- 3. Crear una página en la que apareceran los carteles de las peliculas del ejercicio anterior. Cuando pulsemos sobre cada cartel aparecera la sinopsis de esa pelicula en un partado que estara debajo de las imagenes. Cada sinopsis se guardaran en un fichero diferente. -->
