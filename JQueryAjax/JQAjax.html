@@ -49,12 +49,19 @@
         // Seleccionar todos los asientos pares y marcarlos como reservados (en color azul).
         $("#asientos ul li ul li:nth-child(even)").css({"color":"blue"});
 
+
         //Anadir un fila nueva al final del toddo, con sus correspondientes asientos.
-            var texto = "Asiento nuevo";
-            $("<li/>",{
-                text: texto
-            }).appendTo("#asientos #row_4>li>ul>li");
+            $("<il/>",{
+                text: "Asiento Nuevo"
+            }).appendTo( $("#asientos>#zona_popular>#row_4>li>ul>li"));
+
+
         //Borrar los asientos de la zona VIP, y renombrar atributo id de las filas y adecuar el texto de los asientos.
+        $("#asientos #zona_vip").remove();
+        $("#asientos #zona_popular").each(function (i,e) {
+            this.id="Row_"+[i];
+        })
+
         })
     </script>
 

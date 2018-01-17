@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos JQuery</title>
+    <script src="Jquery3.2.1.js"></script>
+    <script lang="javascript">
+        $(document).ready(function(){
+        // 1. Añadir al elemento "h1" que tiene el nombre del vuelo, el nombre de vuelo asignado que será “815 Oceanic”.
+            $("h1 i").text(" 815 Oceanic");
+
+        // 2. Guarda en tres variables los parámetros principales
+            // del vuelo (la hora de salida, la puerta de salida y el destino),
+            // si no tiene asignada todavía nada, almacena el valor "Sin asignar".
+
+        $hora = $("#time td");
+        $puerta = $("#gate td");
+        $destino = $("#arrives td");
+        if($hora.text()==="") {
+            $hora.text("sin asignar");
+        }
+        if($puerta.text()==="") {
+            $puerta.text("sin asignar");
+        }
+        if($destino.text()===""){
+            $destino.text("sin asignar");
+        }
+
+
+        // 3. Añade entre paréntesis la hora de actualización de los paneles "Logística" y "Pasajeros".
+            // Después de cada actualización (ejercicio) se deberán actualizar las horas
+        var $date = new Date($.now());
+        var reloj = " "+$date.getHours()+":"+$date.getMinutes()+":"+$date.getSeconds();
+        $("h2").append(reloj);
+
+        // 4. Tendremos tres clases diferentes para los pasajeros que hayan embarcado, esten pendientes y
+            // no hallan embarcado (elegir colores y características que queráis).
+
+        // 5. Añadir a los pasajeros cuyo nombre no empiece por "J" la clase de embarcados.
+            // Todos los demás estarán pendientes todavía.
+        $("li").addClass("embarcado"),function(){
+            if($("li").text().charAt(0)==="J"){
+            $("li").removeClass().addClass("pendiente");
+        }
+        }
+        
+
+        // 6. Añadir características al vuelo (puerta, hora y destino).
+
+        // 7. Marcar como embarcados a todos los pasajeros que quedan sin hacerlo excepto "Charlie Pace",
+            // que estará en no embarcado.
+
+        })
+
+
+    </script>
+</head>
+<style>
+    .embarcado{
+        color:green;
+    }
+    .pendiente{
+        color: yellow;
+    }
+    .noEmbarcado{
+        color: red;
+    }
+</style>
+<body>
+<h1>Vuelo<i> sin especificar </i></h1>
+<h2>Logistica</h2>
+<table id="logistics">
+    <tbody>
+    <tr id="time">
+        <th>Hora:</th>
+        <td></td>
+    </tr>
+    <tr id="gate">
+        <th>Puerta:</th>
+        <td></td>
+    </tr>
+    <tr id="arrives">
+        <th>Destino:</th>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+<h2>Pasajeros</h2>
+<ul>
+    <li>Jack Shephard</li>
+    <li>Kate Austin</li>
+    <li>James “Sawyer” Ford</li>
+    <li>John Locke</li>
+    <li>Hugo “Hurley” Reyes</li>
+    <li>Benjamin Linus</li>
+    <li>Charlie Pace</li>
+    <li>Juliet Burke</li>
+</ul>
+</body>
+</html>
