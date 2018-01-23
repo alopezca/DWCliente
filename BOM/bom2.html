@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>bom2</title>
+        <script>
+            function showData() {
+                console.log("URL: " + document.URL);
+                console.log("Navegador: " + navigator.appCodeName);
+                console.log("Titulo: " + document.title);
+                console.log("Nº de formularios: " + document.getElementsByTagName("form").length);
+                console.log("Tamaño de la ventana: " + window.outerWidth + "x" + window.outerHeight);
+
+                console.log("Historial: " + window.history.length);
+                if(window.history.length > 30){
+                    console.log("Deja de navegar!");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="btn">
+            <button type="button" value="Mostrar datos" onclick="showData()"/>
+        </div>
+        <form>
+
+        </form>
+    </body>
+</html>
+<!--
+Crear una página en la que solo aparezca un botón. Al pulsar este botón nos aparecerá cierta información:
+
+La URL de la página en la que estamos.
+El navegador que estamos utilizando.
+El titulo de la página.
+El numero de formularios que hay en la página (si es que hay alguno).
+Tamaño de la ventana actualmente.
+Un mensaje de que dejemos de navegar si comprueba que el historial de visitas es largo.
+ -->

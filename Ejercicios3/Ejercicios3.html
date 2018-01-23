@@ -34,22 +34,33 @@
         $("h2").append(reloj);
 
         // 4. Tendremos tres clases diferentes para los pasajeros que hayan embarcado, esten pendientes y
-            // no hallan embarcado (elegir colores y características que queráis).
+            // no hallan embarcado (elegir colores y características que queráis). --> AÑADIDO POR CSS EN STYLE
 
         // 5. Añadir a los pasajeros cuyo nombre no empiece por "J" la clase de embarcados.
             // Todos los demás estarán pendientes todavía.
-        $("li").addClass("embarcado"),function(){
-            if($("li").text().charAt(0)==="J"){
-            $("li").removeClass().addClass("pendiente");
-        }
-        }
-        
+
+        $("li").each(function(){
+                if($(this).text().charAt(0) === "J"){
+                    $(this).removeClass().addClass("pendiente");
+                } else {
+                    $(this).removeClass().addClass("embarcado");
+                }
+        })
 
         // 6. Añadir características al vuelo (puerta, hora y destino).
+        $hora.text("17:00:00");
+        $puerta.text("5");
+        $destino.text("Madrid");
 
         // 7. Marcar como embarcados a todos los pasajeros que quedan sin hacerlo excepto "Charlie Pace",
             // que estará en no embarcado.
-
+            $("li").each(function(){
+                if($(this).text() == "Charlie Pace"){
+                    $(this).removeClass().addClass("noEmbarcado");
+                } else {
+                    $(this).removeClass().addClass("embarcado");
+                }
+            })
         })
 
 

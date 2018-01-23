@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title></title>
+        <script src="Jquery3.2.1.js">
+                
+        </script>
+
+        <style type="text/css">
+        #parrafo{
+            display:none;
+        }
+        #pulsar{
+            cursor: pointer;
+        }
+        .verde{
+            color: green;
+        }
+        </style>
+            <script>
+                $(document).ready(function(){
+                    $("#pulsar").click(function(){
+                        $("#parrafo").fadeToggle();                            
+                    });
+
+                    $("#parrafo").click(function(){
+                        $("body").append(
+                            $("<p/>" , {
+                                    text : "Elemento nuevo",
+                                    class: 'verde'
+                                }
+                            )
+                        );
+                    })
+                })
+            </script>        
+    </head>
+    <body>
+        <p id="pulsar">Mostrar/Ocultar texto:</p>
+        <p id="parrafo">Texto oculto</p>
+    </body>
+    
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script>
+          let myWindow;
+          let escapeWindow = true;
+
+          function stopEscape() {
+              escapeWindow = false;
+          }
+
+          function mvUp(){
+              myWindow.moveBy(0, -10);
+          }
+
+          function mvDown(){
+              myWindow.moveBy(0, 10);
+          }
+
+          function mvRight(){
+              myWindow.moveBy(-10, 0);
+          }
+
+          function mvLeft(){
+              myWindow.moveBy(10, 0);
+          }
+
+          function escape(){
+              let randomX = Math.floor(Math.random() * screen.availWidth);
+              let randomY = Math.floor(Math.random() * screen.availHeight);
+
+              if(escapeWindow){
+                  myWindow.moveTo(randomX, randomY);
+              }
+          }
+
+          function newWindow() {
+              myWindow = window.open("", "", "width=200,height=200");
+              myWindow.moveTo(800, 800);
+
+              let btnUp = document.createElement("button");
+              let content = document.createTextNode("up");
+              btnUp.appendChild(content);
+              btnUp.onclick = mvUp;
+              btnUp.onmouseover = escape;
+              myWindow.document.body.appendChild(btnUp);
+
+              let btnDown = document.createElement("button");
+              content = document.createTextNode("down");
+              btnDown.appendChild(content);
+              btnDown.onclick = mvDown;
+              btnDown.onmouseover = escape;
+              myWindow.document.body.appendChild(btnDown);
+
+              let btnRight = document.createElement("button");
+              content = document.createTextNode("right");
+              btnRight.appendChild(content);
+              btnRight.onclick = mvRight;
+              btnRight.onmouseover = escape;
+              myWindow.document.body.appendChild(btnRight);
+
+              let btnLeft = document.createElement("button");
+              content = document.createTextNode("left");
+              btnLeft.appendChild(content);
+              btnLeft.onclick = mvLeft;
+              btnLeft.onmouseover = escape;
+              myWindow.document.body.appendChild(btnLeft);
+          }
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="newWindow()">New window</button>
+        <button type="button" onclick="stopEscape()">Stop</button>
+    </body>
+</html>
+<!--
+Tomaremos el ejercicio anterior como base y haremos que la nueva ventana sea una
+ventana que se escape cuando queremos pulsar alguno botón, tener en cuenta los límites
+de la pantalla. Añade a la página principal un botón que haga parar la ventana.
+-->

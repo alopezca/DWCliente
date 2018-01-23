@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #btn{
+            background-color: red;
+        }
+    </style>
+    <script>
+        function addNewDiv() {
+            let newDiv = document.createElement("div");
+            newDiv.textContent = "New div";
+            newDiv.style.backgroundColor = randomColor();
+            document.body.appendChild(newDiv);
+        }
+
+        function randomColor() {
+            let values = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                let index = parseInt(Math.random() * 16);
+                color += values[index];
+            }
+            return color;
+        }
+
+    </script>
+</head>
+<body>
+    <div id="btn">
+        <button type="button" value="btn" onclick="addNewDiv()"/>
+    </div>
+</body>
+</html>
+<!--
+1. Crea una página en el que aparecerá un botón dentro de un <div> que tendrá un color de fondo rojo.
+Al pulsar sobre el botón añadiremos un nuevo <div>  con un color de fondo aleatorio y el texto “SOY UN NUEVO <DIV>”.
+-->
