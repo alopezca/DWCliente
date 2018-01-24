@@ -11,15 +11,16 @@
 // 2. Crea un formulario con 6 cuadros de texto, divididos en dos párrafos.
 // Cada vez que un cuadro de texto tenga el foco deberá resaltar su borde en color rojo,
 // y el párrafo al que pertenece deberá resaltar el color de fondo en azul.
-
-
-
+            $('input:text').focus(function(e){
+                    $(this).css({'border-color' : '#a10000'});
+                    $("p:active").addClass("azul");
+                });
 
         });
     </script>
 </head>
 <style>
-    #cuadroForm{
+    #formulario{
         padding: 10px;
         width: 500px;
         height: 200px;
@@ -29,6 +30,9 @@
         width: 50%;
         float: left;
     }
+    .azul{
+        background-color: #0509ff;
+    }
     #derecha{
         width: 50%;
         float: left;
@@ -36,9 +40,8 @@
 
 </style>
 <body>
-<div id="cuadroForm">
 <form id="formulario" action="#">
-<div id="izquierda">
+<p id="izquierda">
     <label for="fname">First Name</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name.."><br/>
 
@@ -46,9 +49,9 @@
     <input type="text" id="lname" name="lastname" placeholder="Your last name.."><br/>
 
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Introduce email" ><br/>
-</div>
-    <div id="derecha">
+    <input type="text" id="email" name="email" placeholder="Introduce email" ><br/>
+</p>
+    <p id="derecha">
     <label for="phone">Teléfono</label>
     <input type="text" id="phone" name="phone" placeholder="Introduce el telefono"><br/>
 
@@ -57,10 +60,9 @@
 
     <label for="contexto">Contexto</label>
     <input type="text" id="contexto" placeholder="Comenta tu problema"><br/>
-    </div>
+    </p>
     <input type="submit" value="Comprobar"></p>
 </form>
-</div>
 </body>
 
 </html>

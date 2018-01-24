@@ -27,12 +27,35 @@
         // 6. Seleccionar el ítem que posee la clase “current” dentro de la lista #myList y remover dicha clase en el elemento; luego añadir la clase “current” al siguiente ítem de la lista
         $("#MyList li .current").removeClass().next().addClass("current");
         // 7. Seleccionar el primer ítem de la lista en el elemento #slideshow; añadirle la clase “current” al mismo y luego añadir la clase “disabled” a los elementos hermanos.
-
+        $("#slideshow :first").addClass("current").siblings().addClass("disabled");
         // 8. Añadir 5 nuevos ítems al final de la lista desordenada #myList.
+        for (let i=1; i <= 5; i++) {
+            $("#myList").append("<li/>", {text: "Nuevo elemento " + i});
+        }
         // 9. Remover los ítems impares de la lista.
+        $("#myList :odd").remove();
         // 10. Añadir otro elemento h2 y otro párrafo al último div con clase "module".
+        $("div.module:last").append(
+            $("<h2/>", {
+                text:"nuevo h2"
+            })).append(
+                $("<p/>",
+                    {text:"nuevo p"
+            }));
         // 11. Añadir otra opción al elemento select; darle a la opción añadida el valor “Wednesday”.
-        // 12. Añadir un nuevo div.module a la página después del último; luego añadir una copia de una de las imágenes existentes dentro del nuevo div.
+        $("select").append(
+            "<option/>",{
+                value: "Wednesday",
+                text: "Miércoles"
+            });
+        // 12. Añadir un nuevo div.module a la página después del último; luego añadir una copia de una de las
+        // imágenes existentes dentro del nuevo div.
+        $(".module:last").append("<div/>", {
+            className: "module",
+            text: "Nuevo elemento"
+        });
+        $(".module:last").append(
+            $("img").clone());
     });
 
 	</script>
