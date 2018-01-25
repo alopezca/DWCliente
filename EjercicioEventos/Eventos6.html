@@ -11,12 +11,31 @@
 // que estemos introduciendo. Si es par, el fondo de la página será azul cielo, si es impar, será de
 // color naranja chillón.
 
-
+            $("textarea").keyup(function(){
+                var word=$("#textarea").val();
+                var length=word.length;
+                var count=0;
+                for(i=0;i<length;i++){
+                    char=word.charAt(i);
+                    if(char=='a' || char=='e' || char=='i' || char=='o' || char=='u')
+                    {
+                        //console.log(char);
+                        count++;
+                    }
+                }
+                $("#contador").text("Contador vocales: "+count);
+                if(count % 2 == 1){
+                    $("body").css("background-color","#ff940f");
+                } else{
+                    $("body").css("background-color","#3428ff");
+                }
+            })
 
         });
     </script>
-</head>
-<body>
-
+  <body>
+            <h2>Texto</h2>
+            <textarea id="textarea" cols="25" rows="10"></textarea>
+<p id="contador"></p>
 </body>
 </html>

@@ -10,13 +10,32 @@
         //3. Crear una página con varios párrafos y diferentes imágenes. Cuando se intente hacer clic con el
         // botón derecho en alguna imagen deberá alertarnos de que esa acción está prohibida.
         // Cuando seleccionemos parte del texto aparecerá otro alert diciéndonos que también está prohibido.
+            $('img').on('contextmenu', function(e) {
+                return alert("No puedes hacer eso"), false;
+            });
+            $("p").on('selectstart dragstart', function() {
 
-
+                return alert("No puedes seleccionar texto");
+            });
 
         });
     </script>
 </head>
+<style>
+    .img{
+        width: 200px;
+        height: 200px;
+    }
+</style>
 <body>
-
+<p>
+    Hola parrafo1
+</p>
+<p>
+    Hola parrafo 2
+</p>
+<img class="img" src="https://vignette.wikia.nocookie.net/onepiece/images/6/61/Estatua_de_cera_de_Luffy.png/revision/latest/scale-to-width-down/581?cb=20121231203632&path-prefix=es">
+<img class="img" src="http://otaku-w9pxf76zfsktmx3e.stackpathdns.com/wp-content/uploads/2017/07/97f687b32a47575659f8bda17ca4e3fa-zoro-roronoa-monkey.jpg">
+<img class="img" src="https://i.stack.imgur.com/ouNRB.jpg">
 </body>
 </html>

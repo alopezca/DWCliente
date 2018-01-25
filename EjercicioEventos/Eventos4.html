@@ -11,13 +11,51 @@
 //         4. Crea una página con 4 cuadrados (div) que estén pegados entre si haciendo un cuadrado mas grande.
 // Cuando pasemos el ratón por encima de ellos, se escribirá en la página en que cuadrado se encuentra el ratón
 // actualmente y desde cual ha entrado.
-
-
+//         $("div").mouseenter(function(e){
+//            var texto =  "Ha entrado por "+$(this).text();
+//            // console.log(texto);
+//             $("#resultado").text(texto);
+//         });
+//         $("div").mouseover(function(){
+//             var texto =  "Está en "+$(this).text();
+//             console.log(texto);
+//             $("#resultado1").text(texto);
+//         })
+         $(".divSquare").on({
+            mouseenter: function(){
+                    let cuadradoActual = $(this).text();
+                    $("#resultado").text("Está en el "+cuadradoActual);
+            },
+            mouseleave: function(){
+                    let cuadradoEntrado = $(this).text();
+                    $("#resultado1").text("Ha entrado por "+cuadradoEntrado);
+            }
+         })
 
         });
     </script>
 </head>
+<style>
+    .divSquare{
+        width:200px;
+        height:200px;
+        border:1px solid black;
+        float: left;
+    }
+    #third {
+        clear: left;
+    }
+</style>
 <body>
-
+<div id="first" class="divSquare">1</div>
+<div id="second" class="divSquare">2</div>
+<div id="third" class="divSquare">3</div>
+<div id="fourth" class="divSquare">4</div>
+<p id="resultado">
+Ha entrado por
+</p>
+<p id="resultado1">
+Está en
+</p>
 </body>
 </html>
